@@ -24,4 +24,12 @@ namespace RentingGown.Controllers
             return View();
         }
     }
+
+    public class User
+    {
+        public ActionResult Login()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }
