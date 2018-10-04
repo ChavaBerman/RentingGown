@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Frishman&Berman</title>
+    <link rel="icon" href="~/Images/iconography_launcher_example.png" type="image/x-icon" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script>
+        function closeLogin() {
+            document.getElementById("password").value="";
+            document.getElementById("name").value="";
+            document.getElementById("close").click();
+        }
+    </script>
+</head>
+<body dir="rtl">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RentingGown", "Index", "Home", new { }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class="acount-header-btn">
+                    <span class="register-btn">Register</span>/
+                    <span class="login-btn">LogIn</span>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("הרשמה", "AddRenter", "Connection")</li>
+                    <li>@Html.ActionLink("חיפוש שמלה", "Search", "Connection")</li>
+                    <li>@Html.ActionLink("הוספת שמלה", "AddGown", "Connection")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - RentingGown</p>
+        </footer>
+    </div>
+    <div class="account-popup-sec">
+        <div class="acount-popup login-popup">
+            <a href="/Gowns/Search"> <span class="close-popup" id="close"><i class="la la-close"></i></span></a>
+            <h3>LOGIN</h3>
+            @using (Ajax.BeginForm("Login","User", new AjaxOptions
+            {
+
+                HttpMethod = "post",
+               
+            }))
+            {
+                <div class="field-form">
+                    <input class="effect-16" type="text" name="name" id="name">
+                    <label>שם משתמש</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="field-form">
+                    <input class="effect-16" type="password" name="password"id="password">
+                    <label>סיסמה</label>
+                    <span class="focus-border"></span>
+                </div>
+                <button type="submit" onclick="closeLogin()">LOGIN</button>
+            }
+            </div>
+        <div class="acount-popup register-popup">
+            <span class="close-popup"><i class="la la-close"></i></span>
+            <h3>REGISTER</h3>
+            <form>
+                <div class="field-form">
+                    <input class="effect-16" type="text" placeholder="">
+                    <label>First Name</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="field-form">
+                    <input class="effect-16" type="text" placeholder="">
+                    <label>Last Name</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="field-form">
+                    <input class="effect-16" type="text" placeholder="">
+                    <label>Email</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="field-form">
+                    <input class="effect-16" type="password" placeholder="">
+                    <label>Password</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="field-form">
+                    <input class="effect-16" type="password" placeholder="">
+                    <label>Confirm Password</label>
+                    <span class="focus-border"></span>
+                </div>
+                <button type="submit">REGISTER NOW</button>
+                <p>By clicking on “Register Now” button you are accepting the <a href="#" title="">Terms & Conditions</a> </p>
+            </form>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
