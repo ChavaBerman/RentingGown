@@ -33,8 +33,8 @@ namespace RentingGown.Models
         public virtual DbSet<Seasons> Seasons { get; set; }
         public virtual DbSet<Sets> Sets { get; set; }
         public virtual DbSet<Tenants> Tenants { get; set; }
-        public virtual DbSet<Tenants_sets> Tenants_sets { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Rents> Rents { get; set; }
     }
 }

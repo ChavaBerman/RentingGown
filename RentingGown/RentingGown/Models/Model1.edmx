@@ -57,6 +57,18 @@
           <Property Name="id_area" Type="int" />
           <Property Name="password" Type="int" />
         </EntityType>
+        <EntityType Name="Rents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tenant" Type="int" Nullable="false" />
+          <Property Name="id_gown" Type="int" Nullable="false" />
+          <Property Name="payment" Type="int" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="is_payed" Type="bit" />
+          <Property Name="is_returned" Type="bit" />
+        </EntityType>
         <EntityType Name="Seasons">
           <Key>
             <PropertyRef Name="id_season" />
@@ -90,19 +102,6 @@
           <Property Name="cellphone" Type="nvarchar" MaxLength="50" />
           <Property Name="address" Type="nvarchar" MaxLength="50" />
           <Property Name="id_area" Type="int" />
-        </EntityType>
-        <EntityType Name="Tenants-sets">
-          <Key>
-            <PropertyRef Name="id_tenant" />
-            <PropertyRef Name="id_gown" />
-            <PropertyRef Name="date" />
-          </Key>
-          <Property Name="id_tenant" Type="int" Nullable="false" />
-          <Property Name="id_gown" Type="int" Nullable="false" />
-          <Property Name="payment" Type="int" />
-          <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="is_payed" Type="bit" />
-          <Property Name="is_returned" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -213,48 +212,48 @@
         </Association>
         <Association Name="FK__Tenants-s__id_go__15502E78">
           <End Role="Gowns" Type="Self.Gowns" Multiplicity="1" />
-          <End Role="Tenants-sets" Type="Self.Tenants-sets" Multiplicity="*" />
+          <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gowns">
               <PropertyRef Name="id_gown" />
             </Principal>
-            <Dependent Role="Tenants-sets">
+            <Dependent Role="Rents">
               <PropertyRef Name="id_gown" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Tenants-s__id_go__35BCFE0A">
           <End Role="Gowns" Type="Self.Gowns" Multiplicity="1" />
-          <End Role="Tenants-sets" Type="Self.Tenants-sets" Multiplicity="*" />
+          <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gowns">
               <PropertyRef Name="id_gown" />
             </Principal>
-            <Dependent Role="Tenants-sets">
+            <Dependent Role="Rents">
               <PropertyRef Name="id_gown" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Tenants-s__id_te__1367E606">
           <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
-          <End Role="Tenants-sets" Type="Self.Tenants-sets" Multiplicity="*" />
+          <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tenants">
               <PropertyRef Name="id_tenant" />
             </Principal>
-            <Dependent Role="Tenants-sets">
+            <Dependent Role="Rents">
               <PropertyRef Name="id_tenant" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Tenants-s__id_te__36B12243">
           <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
-          <End Role="Tenants-sets" Type="Self.Tenants-sets" Multiplicity="*" />
+          <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tenants">
               <PropertyRef Name="id_tenant" />
             </Principal>
-            <Dependent Role="Tenants-sets">
+            <Dependent Role="Rents">
               <PropertyRef Name="id_tenant" />
             </Dependent>
           </ReferentialConstraint>
@@ -265,11 +264,11 @@
           <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gowns" EntityType="Self.Gowns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Renters" EntityType="Self.Renters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rents" EntityType="Self.Rents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seasons" EntityType="Self.Seasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sets" EntityType="Self.Sets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tenants" EntityType="Self.Tenants" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tenants-sets" EntityType="Self.Tenants-sets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Gowns__color__182C9B23" Association="Self.FK__Gowns__color__182C9B23">
             <End Role="Colors" EntitySet="Colors" />
@@ -305,19 +304,19 @@
           </AssociationSet>
           <AssociationSet Name="FK__Tenants-s__id_go__15502E78" Association="Self.FK__Tenants-s__id_go__15502E78">
             <End Role="Gowns" EntitySet="Gowns" />
-            <End Role="Tenants-sets" EntitySet="Tenants-sets" />
+            <End Role="Rents" EntitySet="Rents" />
           </AssociationSet>
           <AssociationSet Name="FK__Tenants-s__id_go__35BCFE0A" Association="Self.FK__Tenants-s__id_go__35BCFE0A">
             <End Role="Gowns" EntitySet="Gowns" />
-            <End Role="Tenants-sets" EntitySet="Tenants-sets" />
+            <End Role="Rents" EntitySet="Rents" />
           </AssociationSet>
           <AssociationSet Name="FK__Tenants-s__id_te__1367E606" Association="Self.FK__Tenants-s__id_te__1367E606">
             <End Role="Tenants" EntitySet="Tenants" />
-            <End Role="Tenants-sets" EntitySet="Tenants-sets" />
+            <End Role="Rents" EntitySet="Rents" />
           </AssociationSet>
           <AssociationSet Name="FK__Tenants-s__id_te__36B12243" Association="Self.FK__Tenants-s__id_te__36B12243">
             <End Role="Tenants" EntitySet="Tenants" />
-            <End Role="Tenants-sets" EntitySet="Tenants-sets" />
+            <End Role="Rents" EntitySet="Rents" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -371,8 +370,8 @@
           <NavigationProperty Name="Seasons" Relationship="Self.FK__Gowns__id_season__0F975522" FromRole="Gowns" ToRole="Seasons" />
           <NavigationProperty Name="Seasons1" Relationship="Self.FK__Gowns__id_season__108B795B" FromRole="Gowns" ToRole="Seasons" />
           <NavigationProperty Name="Sets" Relationship="Self.FK__Gowns__id_set__117F9D94" FromRole="Gowns" ToRole="Sets" />
-          <NavigationProperty Name="Tenants_sets" Relationship="Self.FK__Tenants_s__id_go__15502E78" FromRole="Gowns" ToRole="Tenants_sets" />
-          <NavigationProperty Name="Tenants_sets1" Relationship="Self.FK__Tenants_s__id_go__35BCFE0A" FromRole="Gowns" ToRole="Tenants_sets" />
+          <NavigationProperty Name="Rents" Relationship="RentingGownModel.FK__Tenants_s__id_go__15502E781" FromRole="Gowns" ToRole="Rents" />
+          <NavigationProperty Name="Rents1" Relationship="RentingGownModel.FK__Tenants_s__id_go__35BCFE0A1" FromRole="Gowns" ToRole="Rents" />
         </EntityType>
         <EntityType Name="Renters">
           <Key>
@@ -420,25 +419,8 @@
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="id_area" Type="Int32" />
           <NavigationProperty Name="Areas" Relationship="Self.FK__Tenants__id_area__267ABA7A" FromRole="Tenants" ToRole="Areas" />
-          <NavigationProperty Name="Tenants_sets" Relationship="Self.FK__Tenants_s__id_te__1367E606" FromRole="Tenants" ToRole="Tenants_sets" />
-          <NavigationProperty Name="Tenants_sets1" Relationship="Self.FK__Tenants_s__id_te__36B12243" FromRole="Tenants" ToRole="Tenants_sets" />
-        </EntityType>
-        <EntityType Name="Tenants_sets">
-          <Key>
-            <PropertyRef Name="id_tenant" />
-            <PropertyRef Name="id_gown" />
-            <PropertyRef Name="date" />
-          </Key>
-          <Property Name="id_tenant" Type="Int32" Nullable="false" />
-          <Property Name="id_gown" Type="Int32" Nullable="false" />
-          <Property Name="payment" Type="Int32" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="is_payed" Type="Boolean" />
-          <Property Name="is_returned" Type="Boolean" />
-          <NavigationProperty Name="Gowns" Relationship="Self.FK__Tenants_s__id_go__15502E78" FromRole="Tenants_sets" ToRole="Gowns" />
-          <NavigationProperty Name="Gowns1" Relationship="Self.FK__Tenants_s__id_go__35BCFE0A" FromRole="Tenants_sets" ToRole="Gowns" />
-          <NavigationProperty Name="Tenants" Relationship="Self.FK__Tenants_s__id_te__1367E606" FromRole="Tenants_sets" ToRole="Tenants" />
-          <NavigationProperty Name="Tenants1" Relationship="Self.FK__Tenants_s__id_te__36B12243" FromRole="Tenants_sets" ToRole="Tenants" />
+          <NavigationProperty Name="Rents" Relationship="RentingGownModel.FK__Tenants_s__id_te__1367E6061" FromRole="Tenants" ToRole="Rents" />
+          <NavigationProperty Name="Rents1" Relationship="RentingGownModel.FK__Tenants_s__id_te__36B122431" FromRole="Tenants" ToRole="Rents" />
         </EntityType>
         <Association Name="FK__Renters__id_area__25869641">
           <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
@@ -536,54 +518,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tenants_s__id_go__15502E78">
-          <End Role="Gowns" Type="Self.Gowns" Multiplicity="1" />
-          <End Role="Tenants_sets" Type="Self.Tenants_sets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gowns">
-              <PropertyRef Name="id_gown" />
-            </Principal>
-            <Dependent Role="Tenants_sets">
-              <PropertyRef Name="id_gown" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tenants_s__id_go__35BCFE0A">
-          <End Role="Gowns" Type="Self.Gowns" Multiplicity="1" />
-          <End Role="Tenants_sets" Type="Self.Tenants_sets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gowns">
-              <PropertyRef Name="id_gown" />
-            </Principal>
-            <Dependent Role="Tenants_sets">
-              <PropertyRef Name="id_gown" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tenants_s__id_te__1367E606">
-          <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
-          <End Role="Tenants_sets" Type="Self.Tenants_sets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tenants">
-              <PropertyRef Name="id_tenant" />
-            </Principal>
-            <Dependent Role="Tenants_sets">
-              <PropertyRef Name="id_tenant" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tenants_s__id_te__36B12243">
-          <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
-          <End Role="Tenants_sets" Type="Self.Tenants_sets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tenants">
-              <PropertyRef Name="id_tenant" />
-            </Principal>
-            <Dependent Role="Tenants_sets">
-              <PropertyRef Name="id_tenant" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="RentingGownDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Areas" EntityType="Self.Areas" />
           <EntitySet Name="Catgories" EntityType="Self.Catgories" />
@@ -593,7 +527,6 @@
           <EntitySet Name="Seasons" EntityType="Self.Seasons" />
           <EntitySet Name="Sets" EntityType="Self.Sets" />
           <EntitySet Name="Tenants" EntityType="Self.Tenants" />
-          <EntitySet Name="Tenants_sets" EntityType="Self.Tenants_sets" />
           <AssociationSet Name="FK__Renters__id_area__25869641" Association="Self.FK__Renters__id_area__25869641">
             <End Role="Areas" EntitySet="Areas" />
             <End Role="Renters" EntitySet="Renters" />
@@ -626,24 +559,25 @@
             <End Role="Sets" EntitySet="Sets" />
             <End Role="Gowns" EntitySet="Gowns" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tenants_s__id_go__15502E78" Association="Self.FK__Tenants_s__id_go__15502E78">
-            <End Role="Gowns" EntitySet="Gowns" />
-            <End Role="Tenants_sets" EntitySet="Tenants_sets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tenants_s__id_go__35BCFE0A" Association="Self.FK__Tenants_s__id_go__35BCFE0A">
-            <End Role="Gowns" EntitySet="Gowns" />
-            <End Role="Tenants_sets" EntitySet="Tenants_sets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tenants_s__id_te__1367E606" Association="Self.FK__Tenants_s__id_te__1367E606">
-            <End Role="Tenants" EntitySet="Tenants" />
-            <End Role="Tenants_sets" EntitySet="Tenants_sets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tenants_s__id_te__36B12243" Association="Self.FK__Tenants_s__id_te__36B12243">
-            <End Role="Tenants" EntitySet="Tenants" />
-            <End Role="Tenants_sets" EntitySet="Tenants_sets" />
-          </AssociationSet>
           <EntitySet Name="Status" EntityType="RentingGownModel.Status" />
           <EntitySet Name="Users" EntityType="RentingGownModel.Users" />
+          <EntitySet Name="Rents" EntityType="RentingGownModel.Rents" />
+          <AssociationSet Name="FK__Tenants_s__id_go__15502E781" Association="RentingGownModel.FK__Tenants_s__id_go__15502E781">
+            <End Role="Gowns" EntitySet="Gowns" />
+            <End Role="Rents" EntitySet="Rents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tenants_s__id_go__35BCFE0A1" Association="RentingGownModel.FK__Tenants_s__id_go__35BCFE0A1">
+            <End Role="Gowns" EntitySet="Gowns" />
+            <End Role="Rents" EntitySet="Rents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tenants_s__id_te__1367E6061" Association="RentingGownModel.FK__Tenants_s__id_te__1367E6061">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="Rents" EntitySet="Rents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tenants_s__id_te__36B122431" Association="RentingGownModel.FK__Tenants_s__id_te__36B122431">
+            <End Role="Tenants" EntitySet="Tenants" />
+            <End Role="Rents" EntitySet="Rents" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Status">
           <Key>
@@ -663,6 +597,70 @@
           <Property Name="userid" Type="Int32" />
           <Property Name="userimage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
+        <EntityType Name="Rents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tenant" Type="Int32" Nullable="false" />
+          <Property Name="id_gown" Type="Int32" Nullable="false" />
+          <Property Name="payment" Type="Int32" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="is_payed" Type="Boolean" />
+          <Property Name="is_returned" Type="Boolean" />
+          <NavigationProperty Name="Gowns" Relationship="RentingGownModel.FK__Tenants_s__id_go__15502E781" FromRole="Rents" ToRole="Gowns" />
+          <NavigationProperty Name="Gowns1" Relationship="RentingGownModel.FK__Tenants_s__id_go__35BCFE0A1" FromRole="Rents" ToRole="Gowns" />
+          <NavigationProperty Name="Tenants" Relationship="RentingGownModel.FK__Tenants_s__id_te__1367E6061" FromRole="Rents" ToRole="Tenants" />
+          <NavigationProperty Name="Tenants1" Relationship="RentingGownModel.FK__Tenants_s__id_te__36B122431" FromRole="Rents" ToRole="Tenants" />
+        </EntityType>
+        <Association Name="FK__Tenants_s__id_go__15502E781">
+          <End Type="RentingGownModel.Gowns" Role="Gowns" Multiplicity="1" />
+          <End Type="RentingGownModel.Rents" Role="Rents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gowns">
+              <PropertyRef Name="id_gown" />
+            </Principal>
+            <Dependent Role="Rents">
+              <PropertyRef Name="id_gown" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tenants_s__id_go__35BCFE0A1">
+          <End Type="RentingGownModel.Gowns" Role="Gowns" Multiplicity="1" />
+          <End Type="RentingGownModel.Rents" Role="Rents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gowns">
+              <PropertyRef Name="id_gown" />
+            </Principal>
+            <Dependent Role="Rents">
+              <PropertyRef Name="id_gown" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tenants_s__id_te__1367E6061">
+          <End Type="RentingGownModel.Tenants" Role="Tenants" Multiplicity="1" />
+          <End Type="RentingGownModel.Rents" Role="Rents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="id_tenant" />
+            </Principal>
+            <Dependent Role="Rents">
+              <PropertyRef Name="id_tenant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tenants_s__id_te__36B122431">
+          <End Type="RentingGownModel.Tenants" Role="Tenants" Multiplicity="1" />
+          <End Type="RentingGownModel.Rents" Role="Rents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenants">
+              <PropertyRef Name="id_tenant" />
+            </Principal>
+            <Dependent Role="Rents">
+              <PropertyRef Name="id_tenant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -756,18 +754,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tenants_sets">
-            <EntityTypeMapping TypeName="RentingGownModel.Tenants_sets">
-              <MappingFragment StoreEntitySet="Tenants-sets">
-                <ScalarProperty Name="id_tenant" ColumnName="id_tenant" />
-                <ScalarProperty Name="id_gown" ColumnName="id_gown" />
-                <ScalarProperty Name="payment" ColumnName="payment" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="is_payed" ColumnName="is_payed" />
-                <ScalarProperty Name="is_returned" ColumnName="is_returned" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Status">
             <EntityTypeMapping TypeName="RentingGownModel.Status">
               <MappingFragment StoreEntitySet="Status">
@@ -785,6 +771,19 @@
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rents">
+            <EntityTypeMapping TypeName="RentingGownModel.Rents">
+              <MappingFragment StoreEntitySet="Rents">
+                <ScalarProperty Name="is_returned" ColumnName="is_returned" />
+                <ScalarProperty Name="is_payed" ColumnName="is_payed" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="id_gown" ColumnName="id_gown" />
+                <ScalarProperty Name="id_tenant" ColumnName="id_tenant" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

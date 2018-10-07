@@ -61,7 +61,7 @@ namespace RentingGown.Controllers
             List<Gowns> listAfterCheckLight = new List<Gowns>();
             List<Gowns> listAfterCheckLong = new List<Gowns>();
             List<Gowns> listAfterCheckColor = new List<Gowns>();
-            List<Gowns> MainSearchResult = db.Gowns.Where(p => p.id_catgory == id_catgory && p.id_season == id_season && p.price < price + 50 && p.price > price - 50).ToList();
+            List<Gowns> MainSearchResult = db.Gowns.Where(p => p.id_catgory == id_catgory && p.id_season == id_season && p.price < price + 50 && p.price > price - 50&&p.is_available==true).ToList();
             List<Gowns> myList = new List<Gowns>();
             //filter by sizes
             if (stringSizes != "")

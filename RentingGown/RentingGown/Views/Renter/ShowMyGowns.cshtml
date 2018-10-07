@@ -1,0 +1,87 @@
+﻿@model List<RentingGown.Models.Gowns>
+
+@{
+    Layout = "~/Views/Shared/_Renter.cshtml";
+}
+
+<h2>השמלות שלי:</h2>
+<table class="table">
+    <tr>
+        <th>
+           תמונה
+        </th>
+        <th>
+            ארוך/קצר
+        </th>
+        <th>
+           מחיר
+        </th>
+        <th>
+            בהיר/כהה
+        </th>
+        <th>
+            מידה
+        </th>
+        <th>
+            קטגוריה
+        </th>
+        <th>
+           עונה
+        </th>
+        <th>
+           צבע
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (RentingGown.Models.Gowns item in Model)
+    {
+    <tr>
+        <td>
+            <img src="~/Images/@item.picture" style="height: 7%"/>
+        </td>
+        @{
+            if (item.is_long == true)
+            {
+                <td>ארוך</td>
+            }
+            else
+            {
+                <td>קצר</td>
+            }
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+
+        @{
+            if (item.is_light == true)
+            {
+                <td>בהיר</td>
+            }
+            else
+            {
+                <td>כהה</td>
+            }
+        }
+
+        <td>
+            @Html.DisplayFor(modelItem => item.size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Catgories.catgory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seasons.season)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colors.color)
+        </td>
+        <td>
+            @Html.ActionLink("עריכה", "Edit", new { id = item.id_gown }) |
+            @Html.ActionLink("מחיקה", "Delete", new { id = item.id_gown })
+        </td>
+    </tr>
+    }
+
+</table>

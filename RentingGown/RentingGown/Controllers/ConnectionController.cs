@@ -418,18 +418,18 @@ namespace RentingGown.Controllers
 
 
 
-                foreach (Gowns gown in (Session["listOfGowns"] as List<Gowns>))
-                {
-                    Tenants_sets NewTenant = new Tenants_sets();
-                    NewTenant.id_gown = gown.id_gown;
-                    NewTenant.id_tenant = q.id_tenant;
-                    NewTenant.payment = gown.price;
+                //foreach (Gowns gown in (Session["listOfGowns"] as List<Gowns>))
+                //{
+                //    Tenants_sets NewTenant = new Tenants_sets();
+                //    NewTenant.id_gown = gown.id_gown;
+                //    NewTenant.id_tenant = q.id_tenant;
+                //    NewTenant.payment = gown.price;
 
-                    NewTenant.date = (DateTime)Session["RequstedDate"];
-                    NewTenant.is_payed = false;
-                    NewTenant.is_returned = false;
-                    db.Tenants_sets.Add(NewTenant);
-                }
+                //    NewTenant.date = (DateTime)Session["RequstedDate"];
+                //    NewTenant.is_payed = false;
+                //    NewTenant.is_returned = false;
+                //    db.Tenants_sets.Add(NewTenant);
+                //}
                 db.SaveChanges();
                 return RedirectToAction("ShowDetails", "Connection");
             }

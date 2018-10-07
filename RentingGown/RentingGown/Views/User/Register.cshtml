@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+<script>
+    function afterLoad() {
+        if (document.getElementById("errorMsg").name == "error")
+            swal({
+                icon: 'error',
+                title: 'נתקלנו בבעיה',
+                text: 'יש להחליף את שם המשתמש או את הסיסמה.'
+            })
+    }
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<body onload="afterLoad()">
+    <section>
+        <div class="block gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="account-popup-sec static-popup">
+                            <div class="acount-popup register-popup">
+                                <h3>הרשמה</h3>
+                                <h5>עבור משכיר</h5>
+                                <form action="@Url.Action("Register","User")" method="post">
+                                    <div class="field-form">
+                                        <input class="effect-16" type="text" name="fname" required>
+                                        <label>שם פרטי</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="field-form">
+                                        <input class="effect-16" type="text" name="lname" required>
+                                        <label>שם משפחה</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="field-form">
+                                        <input class="effect-16" type="text" name="phone" required>
+                                        <label>טלפון</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="field-form">
+                                        <input class="effect-16" type="text" name="cellphone">
+                                        <label>טלפון סלולארי</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="field-form">
+                                        <input class="effect-16" type="text" name="address" required>
+                                        <label>כתובת</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="field-form" dir="rtl">
+                                        <input class="effect-16" type="text" name="username" required>
+                                        <label>שם משתמש (עבור אימות נתונים)</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <div class="field-form">
+                                        <input class="effect-16" type="password" name="password" required minlength="6" maxlength="6">
+                                        <label>סיסמה</label>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                    <button type="submit">REGISTER</button>
+                                    <input type="hidden" id="errorMsg" name=@ViewBag.errorClass />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!-- Bootstrap -->
+<link href="~/Content/line-awesome.min.css" rel="stylesheet" />
+<!-- Icons -->
+<link href="~/Content/style.css" rel="stylesheet" />
+<!-- Style -->
+<link href="~/Content/responsive.css" rel="stylesheet" />
+<!-- Responsive -->
+<link href="~/Content/colors/colors.css" rel="stylesheet" />
+<!-- color -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>

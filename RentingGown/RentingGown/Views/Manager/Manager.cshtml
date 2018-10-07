@@ -1,10 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "Manager";
+    Layout = "~/Views/Shared/_Manager.cshtml";
 }
-
-<h2>Manager</h2>
 <script>
-    alert("Dd");
 </script>
+@if (Session["user"] != null)
+{
+    <h1>hhhhh</h1>
+}
+<h2>Manager</h2>
 

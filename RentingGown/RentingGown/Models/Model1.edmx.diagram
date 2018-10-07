@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="RentingGownModel.Seasons" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentingGownModel.Sets" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentingGownModel.Tenants" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentingGownModel.Tenants_sets" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="RentingGownModel.FK__Renters__id_area__25869641" ManuallyRouted="false" />
         <AssociationConnector Association="RentingGownModel.FK__Tenants__id_area__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="RentingGownModel.FK__Gowns__id_catgor__0DAF0CB0" ManuallyRouted="false" />
@@ -22,12 +21,13 @@
         <AssociationConnector Association="RentingGownModel.FK__Gowns__id_season__0F975522" ManuallyRouted="false" />
         <AssociationConnector Association="RentingGownModel.FK__Gowns__id_season__108B795B" ManuallyRouted="false" />
         <AssociationConnector Association="RentingGownModel.FK__Gowns__id_set__117F9D94" ManuallyRouted="false" />
-        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_go__15502E78" ManuallyRouted="false" />
-        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_go__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_te__1367E606" ManuallyRouted="false" />
-        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_te__36B12243" ManuallyRouted="false" />
         <EntityTypeShape EntityType="RentingGownModel.Status" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="RentingGownModel.Users" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="RentingGownModel.Rents" Width="1.5" PointX="8" PointY="4" />
+        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_go__15502E781" />
+        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_go__35BCFE0A1" />
+        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_te__1367E6061" />
+        <AssociationConnector Association="RentingGownModel.FK__Tenants_s__id_te__36B122431" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

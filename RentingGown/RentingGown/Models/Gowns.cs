@@ -17,8 +17,8 @@ namespace RentingGown.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Gowns()
         {
-            this.Tenants_sets = new HashSet<Tenants_sets>();
-            this.Tenants_sets1 = new HashSet<Tenants_sets>();
+            this.Rents = new HashSet<Rents>();
+            this.Rents1 = new HashSet<Rents>();
         }
     
         public int id_gown { get; set; }
@@ -41,8 +41,8 @@ namespace RentingGown.Models
         public virtual Seasons Seasons1 { get; set; }
         public virtual Sets Sets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tenants_sets> Tenants_sets { get; set; }
+        public virtual ICollection<Rents> Rents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tenants_sets> Tenants_sets1 { get; set; }
+        public virtual ICollection<Rents> Rents1 { get; set; }
     }
 }
