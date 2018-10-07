@@ -88,4 +88,12 @@ public ActionResult LogOut()
     return RedirectToAction("Index", "Home");
 }
     }
+
+    public class User
+    {
+        public ActionResult Login()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }
